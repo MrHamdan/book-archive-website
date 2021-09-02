@@ -12,7 +12,7 @@ const searchBook = () => {
     const errorMessage = document.getElementById('result-found-container');
     errorMessage.textContent = "";
     spinner.classList.add('d-none');
-    errorMessage.innerText = "Please Provide a Book Name";
+    errorMessage.innerHTML = `<h2 class="fw-bold">Please enter a book name!!!</h2>`;
     bookContainer.classList.add('d-none');
   }
   else {
