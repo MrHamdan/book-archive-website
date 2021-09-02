@@ -1,10 +1,13 @@
-const bookContainer = document.getElementById('book-container');
 const backgroundImage = document.getElementById('bg-img')
 backgroundImage.style.backgroundImage = "url('images/hlezTG.jpg')"
+const bookContainer = document.getElementById('book-container');
+const searchField = document.getElementById('search-field');
+const showResult = document.getElementById('result-found-container');
+const errorMessage = document.getElementById('result-found-container');
+
 
 // Get value from Input
 const searchBook = () => {
-  const searchField = document.getElementById('search-field');
   const searchText = searchField.value;
 
   // Error Handle
@@ -14,9 +17,9 @@ const searchBook = () => {
     bookContainer.textContent = '';
   }
   else {
-    const errorMessage = document.getElementById('result-found-container');
     errorMessage.innerText = '';
     spinner.classList.remove('d-none');
+
     // Load data
     const url = `https://openlibrary.org/search.json?q=${searchText}`
     fetch(url)
@@ -24,6 +27,7 @@ const searchBook = () => {
       .then(data => displaySearchResult(data))
       .finally(() => spinner.classList.add('d-none'))
   }
+
   // clear data
   searchField.value = '';
 }
@@ -31,8 +35,8 @@ const searchBook = () => {
 // Display data
 const displaySearchResult = (data) => {
   bookContainer.textContent = '';
-  const errorMessage = document.getElementById('result-found-container');
   errorMessage.textContent = '';
+
   // error handle
   if (data.num_found === 0) {
     alert('No data Found');
@@ -41,8 +45,8 @@ const displaySearchResult = (data) => {
   }
   else {
     errorMessage.innerText = '';
+
     // show how many search result
-    const showResult = document.getElementById('result-found-container');
     const totalBooks = data.num_found;
     const books = data.docs;
     const h2 = document.createElement('h2');
