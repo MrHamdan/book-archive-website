@@ -20,7 +20,7 @@ const searchBook = () => {
     errorMessage.innerText = '';
     spinner.classList.remove('d-none');
 
-    // Load data
+    // Load data from url
     const url = `https://openlibrary.org/search.json?q=${searchText}`
     fetch(url)
       .then(response => response.json())
@@ -46,14 +46,14 @@ const displaySearchResult = (data) => {
   else {
     errorMessage.innerText = '';
 
-    // show how many search result
+    // Show how many search result
     const totalBooks = data.num_found;
     const books = data.docs;
     const h2 = document.createElement('h2');
     h2.innerText = `Found ${totalBooks} Number of books and showing ${books.length}`
     showResult.appendChild(h2);
 
-    // clear data
+    // Clear data
     bookContainer.textContent = '';
 
     // Run forEach loop and show books
