@@ -1,3 +1,5 @@
+const backgroundImage = document.getElementById('bg-img')
+backgroundImage.style.backgroundImage = "url('images/hlezTG.jpg')"
 const searchBook = () => {
   const searchField = document.getElementById('search-field');
   const searchText = searchField.value;
