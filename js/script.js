@@ -9,7 +9,6 @@ const searchBook = () => {
 
   // Error Handle
   if (searchText === '') {
-    const errorMessage = document.getElementById('result-found-container');
     spinner.classList.add('d-none');
     errorMessage.innerHTML = `<h2 class="fw-bold">Please enter a book name!!!</h2>`;
     bookContainer.textContent = '';
